@@ -1,0 +1,76 @@
+Dorothy Hunt
+
+Handling Exception: Try-Catch-Finally
+
+In this blog post I will attempt to explain the following code:
+
+
+class HylandCopy
+{
+        static void Main(string[] args)
+        {
+            string num1 = "2";
+            string num2 = "3";
+            Console.WriteLine(Add(num1, num2));
+            Console.ReadLine();
+        }
+
+        public static string Add(string num1, string num2)
+        {
+            try
+            {
+                throw new Exception("Invalid Numbers. Cannot add strings.");
+                Console.WriteLine("Will this writeline message run?");
+            }
+
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            finally
+            {
+                Console.Write("Goodbye... ");
+            }
+
+        }
+}
+
+The concept of Try-Catch-Finally is that the code within the finally block is always executed, no matter how the program flow leaves the try block. This guarantees that the finally block will be executed even if an exception is thrown or a return statement is executed within the try block. The finally block will free up any resources that are being used within the code.
+
+Let's break down the code bit by bit...
+
+        static void Main(string[] args)
+        {
+            string num1 = "2";
+            string num2 = "3";
+            Console.WriteLine(Add(num1, num2));
+            Console.ReadLine();
+        }
+
+Within the Main method in the HylandCopy class, we are calling the Add method and we are also passing it 2 string arguments (variables). The WriteLine method will output what ever comes back from the Add method.
+
+
+	public static string Add(string num1, string num2)
+
+Outside the Main method, I created my static string Add method with 2 parameters.
+
+	    try
+            {
+                throw new Exception("Invalid Numbers. Cannot add strings.");
+                Console.WriteLine("Will this writeline message run?");
+            }
+
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            finally
+            {
+                Console.Write("Goodbye... ");
+            }
+
+Within the Add method, I created a Try-Catch-Finally construct that will handle an exception. The try block is throwing an Exception (we know this by the keyword "throw") and because of this, the rest of the try block will not execute. Instead, the catch block will run. This block is in charge of handling the exception in the specified way listed within the block. In my example, it will return the exception message "Invalid Numbers. Cannot add strings.". 
+
+No matter what the outcome of the try block might have been, the finally block will still run. The question is what will the final message be? Because we are using a return statement in the catch block, the finally block message will come first before the program ends (the program ends when it reaches the return statement).
+
+The Add method will return "Goodbye... Invalid Numbers. Cannot add strings." to the Main method which will in turn print it to the console. 

@@ -1,0 +1,44 @@
+*********** Still working on it! Codeeval 1st non repeat
+
+string line = "tooth";
+int item = 0;
+char firstLetter = line[item];
+//char secondLetter = line[item++];
+string answer = "";
+for(int counter = 0; counter < line.Length; counter++)
+{
+    
+    if (firstLetter == line[counter])
+    {
+        firstLetter = line[item++];
+        
+    }
+    
+    else
+        answer += line[counter];
+}
+Console.WriteLine(answer);
+
+output: ooh
+
+*****************
+
+Codeeval - array absurdity
+
+string line = "5;0,1,2,3,0";
+int indexNum = line.IndexOf(";");
+string arrayLength = line.Substring(0, indexNum);
+Console.WriteLine(arrayLength);
+string numList = line.Substring(indexNum + 1);
+Console.WriteLine(numList);
+string[] numArray = numList.Split(',');
+string result = "";
+for(int i = 0; i < numArray.Length; i++)
+{
+    result += numArray[i];
+}
+Console.WriteLine(result);
+output:
+5
+0,1,2,3,0
+01230
